@@ -22,11 +22,14 @@ public class ControlLibererEtal {
 	 *         vendu [3] : quantité de produit à vendre au début du marché [4] :
 	 *         quantité de produit vendu
 	 */
+	
+	
 	public String[] libererEtal(String nomVendeur) {
-		String[] donneesEtal = null;
-		Etal etalTrouver = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur);
-		if (etalTrouver != null)
-			donneesEtal = etalTrouver.etatEtal();
+		if (controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur) == null)
+			return null;
+		
+		String[] donneesEtal = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).etatEtal();
+		controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).libererEtal();
 		return donneesEtal;
 	}
 }

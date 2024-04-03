@@ -79,6 +79,7 @@ public class Village {
 		int indiceEtal = marche.trouverEtalLibre();
 		if (indiceEtal >= 0) {
 			marche.utiliserEtal(indiceEtal, vendeur, produit, nbProduit);
+			indiceEtal ++;
 		}
 		return indiceEtal;
 	}

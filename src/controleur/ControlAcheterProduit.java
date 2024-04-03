@@ -15,5 +15,32 @@ public class ControlAcheterProduit {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
 
-	//TODO a completer
+	public boolean verifierIdentiteClient(String nomClient) {
+		return controlVerifierIdentite.verifierIdentite(nomClient);
+	}
+	
+	public boolean trouverProduit (String produit) {
+		return village.rechercherVendeursProduit(produit) != null;
+	}
+	
+	public String [] trouverVendeurs(String produit) {
+		String [] listeVendeurs = null;
+		if (village.rechercherVendeursProduit(produit) == null)
+			return null;
+		int nbVendeurs = village.rechercherVendeursProduit(produit).length;
+		if (nbVendeurs > 0) {
+			listeVendeurs = new String[nbVendeurs];
+			for(int i = 0; i < nbVendeurs; i++) {
+				listeVendeurs[i] = village.rechercherVendeursProduit(produit)[i].getNom();
+			}
+		}
+		return listeVendeurs;
+	}
+	
+	public int acheterProduit(String nomVendeur, int quantiteAcheter) {
+		int nbProduitAcheter = controlTrouverEtalVendeur.trouverEtalVendeur(nomVendeur).acheterProduit(quantiteAcheter);
+		return nbProduitAcheter;
+	}
+	
+	
 }
